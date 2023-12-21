@@ -1,13 +1,14 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-  document.getElementById("avatar").setAttribute('animation-mixer','clip: Idle; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+  document.getElementById("avatar").setAttribute('animation-mixer','clip: Idle; loop: once; clampWhenFinished: true;');
   
   let isCenter = true;
   let isLeft = false;
   let isRight = false;
+  let isAnim = false;
 
-
+  const Avatar = document.getElementById("avatar");
   const leftBtn = document.getElementById("leftBtn");
   const centerBtn = document.getElementById("centerBtn");
   const rightBtn = document.getElementById("rightBtn");
@@ -15,19 +16,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
   leftBtn.addEventListener("click", function(){
 
-    if(isCenter){
+    if(isCenter && isAnim === false){
       
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: CenterToIzq; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: CenterToIzq; loop: once; clampWhenFinished: true;');
       
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = false;
       isRight = false;
       isLeft = true;
 
     }
 
-    if(isRight){
+    if(isRight && isAnim === false){
 
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: DerToIzq; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: DerToIzq; loop: once; clampWhenFinished: true;');
+      
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = false;
       isRight = false;
       isLeft = true;
@@ -39,20 +51,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
   centerBtn.addEventListener("click", function(){
     
-    if(isRight){
+    if(isRight && isAnim === false){
       
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: DerToCenter; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: DerToCenter; loop: once; clampWhenFinished: true;');
       
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = true;
       isRight = false;
       isLeft = false;
 
     }
     
-    if(isLeft){
+    if(isLeft && isAnim === false){
       
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: IzqToCenter; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
-      
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: IzqToCenter; loop: once; clampWhenFinished: true;');
+
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = true;
       isRight = false;
       isLeft = false;
@@ -63,24 +85,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
   rightBtn.addEventListener("click", function(){
     
-    if(isCenter){
+    if(isCenter && isAnim === false){
       
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: CenterToDer; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: CenterToDer; loop: once; clampWhenFinished: true;');
       
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = false;
       isRight = true;
       isLeft = false;
 
     }
 
-    if(isLeft){
+    if(isLeft && isAnim === false){
       
-      document.getElementById("avatar").setAttribute('animation-mixer','clip: IzqToDer; loop: once; clampWhenFinished: true; crossFadeDuration: 3;');
+      document.getElementById("avatar").setAttribute('animation-mixer','clip: IzqToDer; loop: once; clampWhenFinished: true;');
       
+      leftBtn.disabled = true;
+      rightBtn.disabled = true;
+      centerBtn.disabled = true;
+
+      isAnim = true;
       isCenter = false;
       isRight = true;
       isLeft = false;
 
+    }
+
+  });
+
+  Avatar.addEventListener('animation-finished', function () {
+
+    console.log('La animación ha finalizado:');
+    
+    isAnim = false;
+
+    if(isAnim === false){
+      
+      leftBtn.disabled = false;
+      rightBtn.disabled = false;
+      centerBtn.disabled = false;
+    
     }
 
   });
