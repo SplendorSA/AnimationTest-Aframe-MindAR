@@ -22,7 +22,20 @@ body {
   top: 0;
   bottom: 0;
   background: transparent;
-  z-index: 2;
+  z-index: 3;
+}
+
+.Botones{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: transparent;
+  margin-top: 80vh;
+  z-index: 3;
 }
 
 @media (min-aspect-ratio: 1/1) {
