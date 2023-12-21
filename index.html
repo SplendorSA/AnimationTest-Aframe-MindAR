@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" class="light scroll-smooth" dir="ltr">
+    <head>
+
+      <meta charset="UTF-8" />
+      <title>Mind AR Pruebas</title>
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, shrink-to-fit=no" />
+      <meta name="author" content="MtrQ - Desarrollador Digital de Splendor Publicidad S.A." />
+      <meta name="website" content="https://www.splendorpublicidad.com" />
+      <meta name="email" content="comercial@splendorpublicidad.com" />
+      <meta name="version" content="1.8.0" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+      <!-- favicon -->
+      <link rel="shortcut icon" href="assets/images/favicon.ico" />
+      <link rel="apple-touch-icon" href="assets/images/favicon.ico" />
+
+      <!-- Librerías -->
+      <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
+      
+      <!-- JS para AR -->
+      <script src="./assets/js/popups.js"></script>
+      <script src="./assets/js/mindarscripting.js"></script>
+
+      <!-- Css -->
+      <link rel="stylesheet" href="./assets/css/nothingstyles.css">
+      <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+        
+      <!-- Main Css -->
+      <link href="assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
+      <link rel="stylesheet" href="assets/css/icons.css" />
+      <link rel="stylesheet" href="assets/css/tailwind.css" />
+        
+      </head>
+    
+      <body>
+        
+        
+        
+        <!-- Container AR -->
+        <div class="example-container">
+          
+          <!-- ScanLine: aparece cuando el target no está siendo enfocado-->
+          <div id="example-scanning-overlay" class="hidden">
+    
+            <div class="inner">
+    
+              <div class="scanline"></div>
+              <img src="./assets/images/YAE.png"/>
+              
+            </div>
+    
+          </div>
+          <!-- Fin ScanLine -->
+    
+          <a-scene
+          mindar-image="
+          imageTargetSrc: ./assets/targets/Yae.mind;
+          showStats: false;
+          uiScanning: #example-scanning-overlay;
+          filterMinCF: 0.0001; 
+          filterBeta: 0.001;"
+          embedded 
+          renderer="colorManagement: true; physicallyCorrectLights: true; logarithmicDepthBuffer: true; precision: high;"
+          vr-mode-ui="enabled: false"
+          device-orientation-permission-ui="enabled: false"
+          stats = "false"
+          >
+    
+            <!-- Biblioteca de Assets dentro del proyecto que se usan dentro del AR -->
+            <a-assets>
+
+              <!-- Modelado 3D -->
+              <a-asset-item id="avatarModel" src=""></a-asset-item>
+              
+            </a-assets>
+            <!-- Fin Bliblioteca Assets -->
+    
+            <!-- AR Camera Config -->
+            <a-camera
+            position="0 0 0"
+            look-controls="enabled: false" 
+            cursor="fuse: false; rayOrigin: mouse;" 
+            raycaster="far: 10000; objects: .clickable">
+            </a-camera>
+            <!-- Fin AR Camera Config -->
+    
+            <!-- Target con sus objetos internos -->
+            <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+    
+                <!-- Posición Objeto 3D -->
+                <a-entity
+                id="avatar"
+                gltf-model="#avatarModel"
+                rotation="90 0 0"
+                scale=".7 .7 .7"
+                position="0 -0.2 .2"
+                >
+                </a-entity>
+
+            </a-entity>       
+    
+          </a-scene>
+    
+        </div>
+        <!-- Fin Container AR -->
+
+        <!-- JAVASCRIPTS -->
+        <script src="assets/libs/tiny-slider/min/tiny-slider.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/js/plugins.init.js"></script>
+        <script src="assets/js/app.js"></script>
+        <!-- JAVASCRIPTS -->
+    </body>
+</html>
