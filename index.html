@@ -38,10 +38,10 @@
       <body>
         
         
-        
         <!-- Container AR -->
         <div class="example-container">
-          
+
+
           <!-- ScanLine: aparece cuando el target no está siendo enfocado-->
           <div id="example-scanning-overlay" class="hidden">
     
@@ -55,6 +55,17 @@
           </div>
           <!-- Fin ScanLine -->
     
+          <div id="Aparece-en-Escena" class="container absolute justify-center text-center items-center" style="display: none; padding-left: 21%; padding-top: 65%;" >
+            
+            
+            <button id="leftBtn" class="btn text-white hover:bg-white hover:text-black bg-black rounded-md" onclick="">Izquierda</button>
+            <button id="centerBtn" class="btn text-white hover:bg-white hover:text-black bg-black rounded-md" onclick="">Centro</button>
+            <button id="rightBtn" class="btn text-white hover:bg-white hover:text-black bg-black rounded-md" onclick="">Derecha</button>
+            
+            
+          </div>
+
+
           <a-scene
           mindar-image="
           imageTargetSrc: ./assets/targets/Yae.mind;
@@ -73,7 +84,7 @@
             <a-assets>
 
               <!-- Modelado 3D -->
-              <a-asset-item id="avatarModel" src=""></a-asset-item>
+              <a-asset-item id="avatarModel" src="./assets/models/Pruebas.glb"></a-asset-item>
               
             </a-assets>
             <!-- Fin Bliblioteca Assets -->
@@ -94,9 +105,7 @@
                 <a-entity
                 id="avatar"
                 gltf-model="#avatarModel"
-                rotation="90 0 0"
-                scale=".7 .7 .7"
-                position="0 -0.2 .2"
+                position="0 0 -5"
                 >
                 </a-entity>
 

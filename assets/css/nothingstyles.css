@@ -8,6 +8,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 /* Estilos del Div que contiene Scanline que aparece cuando no se a escaneado el Target*/
@@ -23,7 +24,6 @@ body {
   background: transparent;
   z-index: 2;
 }
-
 
 @media (min-aspect-ratio: 1/1) {
 
