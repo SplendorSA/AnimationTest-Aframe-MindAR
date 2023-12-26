@@ -23,6 +23,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const arLeftBtn = document.querySelector("#IzqBtn");
   const arSuperLeftBtn = document.querySelector("#SuperIzqBtn");
 
+  arSuperRightBtn.setAttribute('visible', 'false');
+  arSuperLeftBtn.setAttribute('visible', 'false');
+
+
   // Eventos botones en Interfaz
   leftBtn.addEventListener("click", function(){
 
@@ -302,6 +306,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   
   // Eventos gestos mobile
+
+  // Lectura de Presión
   document.addEventListener("touchstart", e => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
@@ -309,6 +315,8 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log("Presión");
   });
 
+
+  // Lectura de movimiento y hacia donde se direcciona el movimiento
   document.addEventListener("touchmove", e => {
       const currentX = e.touches[0].clientX;
       const currentY = e.touches[0].clientY;
@@ -509,6 +517,8 @@ document.addEventListener("DOMContentLoaded", function() {
       startY = currentY;
   });
 
+
+  // Lectura cuando se deja de Presionar
   document.addEventListener("touchend", e => {
       console.log("NoPresión");
       isPress = false;
@@ -533,7 +543,10 @@ document.addEventListener("DOMContentLoaded", function() {
       if(isLeft){
 
         arRightBtn.setAttribute('visible', 'true');
+        arRightBtn.setAttribute('position', '-1.05 0 -1');
+
         arSuperRightBtn.setAttribute('visible', 'true');
+        arSuperRightBtn.setAttribute('position', '-0.7 0 -1');
 
         arLeftBtn.setAttribute('visible', 'false');
         arSuperLeftBtn.setAttribute('visible', 'false');
@@ -543,7 +556,11 @@ document.addEventListener("DOMContentLoaded", function() {
       if(isCenter){
 
         arRightBtn.setAttribute('visible', 'true');
+        arRightBtn.setAttribute('position', '.45 0 -1');
+
         arLeftBtn.setAttribute('visible', 'true');
+        arLeftBtn.setAttribute('position', '-.45 0 -1');
+
 
         arSuperRightBtn.setAttribute('visible', 'false');
         arSuperLeftBtn.setAttribute('visible', 'false');
@@ -552,11 +569,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if(isRight){
 
+        arLeftBtn.setAttribute('visible', 'true');
+        arLeftBtn.setAttribute('position', '1.05 0 -1');
+
+        arSuperLeftBtn.setAttribute('visible', 'true');
+        arSuperLeftBtn.setAttribute('position', '.7 0 -1');
+
         arRightBtn.setAttribute('visible', 'false');
         arSuperRightBtn.setAttribute('visible', 'false');
 
-        arLeftBtn.setAttribute('visible', 'true');
-        arSuperLeftBtn.setAttribute('visible', 'true');
 
       }
     
