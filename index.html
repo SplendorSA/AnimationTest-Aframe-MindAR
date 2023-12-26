@@ -16,12 +16,14 @@
       <link rel="apple-touch-icon" href="assets/images/favicon.ico" />
 
       <!-- Librerías -->
-      <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+      <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
       <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
       
       <!-- JS para AR -->
-      <script src="./assets/js/mindarscripting.js"></script>
+      <script src="./assets/js/mindar-buttons-scripting.js"></script>
+      <!-- <script src="./assets/js/mindar-touch-scripting.js" type="module"></script> -->
+
 
       <!-- Css -->
       <link rel="stylesheet" href="./assets/css/nothingstyles.css">
@@ -85,6 +87,12 @@
               <!-- Modelado 3D -->
               <a-asset-item id="avatarModel" src="./assets/models/Pruebas.glb"></a-asset-item>
               
+              <img id="Der" src="./assets/images/Der.png">
+              <img id="SuperDer" src="./assets/images/SuperDer.png">
+              <img id="Izq" src="./assets/images/Izq.png">
+              <img id="SuperIzq" src="./assets/images/SuperIzq.png">
+
+
             </a-assets>
             <!-- Fin Bliblioteca Assets -->
     
@@ -99,14 +107,31 @@
     
             <!-- Target con sus objetos internos -->
             <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
-    
+
+              <a-image id="DerBtn" src="#Der" class="clickable" scale=".3 .3 .3" position=".45 0 -1"></a-image>
+              <a-image id="SuperDerBtn" src="#SuperDer" class="clickable" scale=".3 .3 .3" position=".8 0 -1"></a-image>
+              <a-image id="IzqBtn" src="#Izq" class="clickable" scale=".3 .3 .3" position="-.45 0 -1"></a-image>
+              <a-image id="SuperIzqBtn" src="#SuperIzq" class="clickable" scale=".3 .3 .3" position="-.8 0 -1"></a-image>
+              
                 <!-- Posición Objeto 3D -->
-                <a-entity
-                id="avatar"
-                gltf-model="#avatarModel"
-                position="0 0 -5"
-                >
-                </a-entity>
+              <a-entity
+
+              id="avatar"
+
+              class="clickable"
+
+              gltf-model="#avatarModel"
+
+              position="0 0 -1"
+
+              scale=".5 .5 .5"
+              cube-env-map="
+              path: ./assets/images/CubeMaps/Ciudad/;
+              extension: png;"
+              >
+              </a-entity>
+
+
 
             </a-entity>       
     
